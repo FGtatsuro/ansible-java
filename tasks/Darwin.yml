@@ -1,2 +1,4 @@
 ---
 # tasks file for java(On OSX)
+- name: Install Java with Homebrew Cask
+  homebrew_cask: name=java
