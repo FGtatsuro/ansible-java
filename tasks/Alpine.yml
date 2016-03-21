@@ -1,2 +1,7 @@
 ---
 # tasks file for java(On Alpine Linux)
+- name: Install Java with APK
+  apk: name=openjdk8 update_cache=yes
+  become: yes
+- name: "Workaround: Resolve the issue /usr/bin/javac doesn't exist"
+  file: path="/usr/bin/javac" src="/usr/lib/jvm/java-1.8-openjdk/bin/javac" state=link
