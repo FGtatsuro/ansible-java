@@ -1,4 +1,6 @@
+require 'specinfra'
 require "spec_helper_#{ENV['SPEC_TARGET_BACKEND']}"
+include SpecHelper
 
 describe command('which java') do
   its(:exit_status) { should eq 0 }
@@ -9,13 +11,13 @@ describe command('which javac') do
 end
 
 describe command('javac ./Test.java && java Test') do
-  before(:all) do
-    File.write('Test.java', 'class Test {public static void main(String[] args){System.out.println("Hello");}}')
+  before(:each) do
+    SpecHelper.create_file('Test.java', 'class Test {public static void main(String[] args){System.out.println("Hello");}}')
   end
 
   its(:stdout) { should contain('Hello') }
 
   after(:all) do
-    File.delete('Test.java', 'Test.class')
+    SpecHelper.delete_file('Test.java', 'Test.class')
   end
 end
