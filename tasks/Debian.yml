@@ -1,2 +1,16 @@
 ---
 # tasks file for java(On Debian family)
+# Ref. http://www.webupd8.org/2014/03/how-to-install-oracle-java-8-in-debian.html
+- name: Add an APT key for OracleJDK
+  apt_key: keyserver="hkp://keyserver.ubuntu.com:80" id="EEA14886"
+- name: Add OracleJDK repository
+  apt_repository: repo="{{ item }}"
+  with_items:
+    - "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main"
+    - "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main"
+- name: Install apt-utils for debconf module
+  apt: name=apt-utils update_cache=yes cache_valid_time=3600 install_recommends=no
+- name: Accept Oracle Licence
+  debconf: name="oracle-java8-installer" question="shared/accepted-oracle-license-v1-1" value="true" vtype="select"
+- name: Install Java with APT
+  apt: name=oracle-java8-installer update_cache=yes cache_valid_time=3600 install_recommends=no
