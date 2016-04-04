@@ -3,7 +3,7 @@ ansible-java
 
 [![Build Status](https://travis-ci.org/FGtatsuro/ansible-java.svg?branch=master)](https://travis-ci.org/FGtatsuro/ansible-java)
 
-Ansible role for Oracle Java.
+Ansible role for JDK.
 
 Requirements
 ------------
