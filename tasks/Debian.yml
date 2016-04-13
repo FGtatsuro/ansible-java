@@ -5,5 +5,7 @@
   with_items:
     - "deb http://ftp.jp.debian.org/debian stable-backports main contrib non-free"
     - "deb-src http://ftp.jp.debian.org/debian stable-backports main contrib non-free"
+  become: yes
 - name: Install Java with APT
   apt: name=openjdk-8-jdk update_cache=yes cache_valid_time=3600 install_recommends=no
+  become: yes
