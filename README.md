@@ -3,7 +3,7 @@ ansible-java
 
 [![Build Status](https://travis-ci.org/FGtatsuro/ansible-java.svg?branch=master)](https://travis-ci.org/FGtatsuro/ansible-java)
 
-Ansible role for JDK.
+Ansible role for OpenJDK.
 
 Requirements
 ------------
@@ -45,6 +45,11 @@ Local requirements are as follows.
 
 - Ansible (>= 2.0.0)
 - Docker (>= 1.10.1)
+
+Notes
+-----
+
+This role installs OpenJDK 1.8. Thus, you can't install old version on this role.
 
 License
 -------
