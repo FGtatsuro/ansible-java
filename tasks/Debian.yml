@@ -2,9 +2,7 @@
 # tasks file for java(On Debian family)
 - name: Add repositories for latest Java packages
   apt_repository: repo="{{ item }}"
-  with_items:
-    - "deb http://ftp.jp.debian.org/debian stable-backports main contrib non-free"
-    - "deb-src http://ftp.jp.debian.org/debian stable-backports main contrib non-free"
+  with_items: "{{ java_apt_repositories }}"
   become: yes
 - name: Install Java with APT
   apt: name=openjdk-8-jdk update_cache=yes cache_valid_time=3600 install_recommends=no
