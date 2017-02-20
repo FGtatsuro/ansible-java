@@ -1,10 +1,11 @@
 ---
 # tasks file for java(On Debian family)
 - name: Add repositories for latest Java packages
-  apt_repository: repo="{{ item }}"
+  apt_repository:
+    repo: "{{ item }}"
   with_items: "{{ java_apt_repositories }}"
   become: yes
-- block
+- block:
   # FYI.
   # https://github.com/docker-library/openjdk/pull/95
   # https://github.com/docker-library/openjdk/issues/96
