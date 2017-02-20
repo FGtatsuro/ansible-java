@@ -4,6 +4,20 @@
   apt_repository: repo="{{ item }}"
   with_items: "{{ java_apt_repositories }}"
   become: yes
-- name: Install Java with APT
-  apt: name=openjdk-8-jdk update_cache=yes cache_valid_time=3600 install_recommends=no
+- block
+  # FYI.
+  # https://github.com/docker-library/openjdk/pull/95
+  # https://github.com/docker-library/openjdk/issues/96
+  - name: Install proper CA certificate for Java installation.
+    apt:
+      name: 'ca-certificates-java=20161107~bpo8+1'
+      update_cache: yes
+      cache_valid_time: 3600
+      install_recommends: no
+  - name: Install Java with APT
+    apt:
+      name: 'openjdk-8-jdk'
+      update_cache: yes
+      cache_valid_time: 3600
+      install_recommends: no
   become: yes
