@@ -21,4 +21,9 @@
       update_cache: yes
       cache_valid_time: 3600
       install_recommends: no
+  # TODO: Maybe, it causes several issues.
+  - name: Remove Java7 (ca-certificates-java installs it, but it is no more needed after java8 installation)
+    apt:
+      name: 'openjdk-7-jre-headless'
+      state: absent
   become: yes
