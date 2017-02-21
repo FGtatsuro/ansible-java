@@ -17,6 +17,8 @@ describe command('javac ./Test.java && java Test') do
   end
 
   its(:stdout) { should contain('Hello') }
+  its(:stderr) { should contain('') }
+  its(:exit_status) { should eq 0 }
 
   after(:all) do
     SpecHelper.delete_file('Test.java', 'Test.class')
