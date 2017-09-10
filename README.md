@@ -22,7 +22,7 @@ The variables we can use in this role.
 
 |name|description|type|default|
 |---|---|---|---|
-|java_apt_repositories|Some repositories this role adds for OpenJDK installation.|list|- "deb http://ftp.jp.debian.org/debian stable-backports main contrib non-free"<br>- "deb-src http://ftp.jp.debian.org/debian stable-backports main contrib non-free"|
+|java_apt_repositories|Some repositories this role adds for OpenJDK installation.|list|- "deb http://ftp.jp.debian.org/debian jessie-backports main contrib non-free"<br>- "deb-src http://ftp.jp.debian.org/debian jessie-backports main contrib non-free"|
 
 This variable is used only on Debian, isn't used on Alpine Linux/OSX.
 
